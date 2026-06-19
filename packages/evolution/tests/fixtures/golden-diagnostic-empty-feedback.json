@@ -1,0 +1,77 @@
+{
+  "traceId": "trace-empty-feedback-001",
+  "agentId": "my-agent",
+  "harness_version": "v37",
+  "principles": [
+    {
+      "principle": "context",
+      "score": 0.72,
+      "coverage": 0.9,
+      "hitCount": 2,
+      "relevantEventCount": 20,
+      "worstDetector": ""
+    },
+    {
+      "principle": "plan_execute",
+      "score": 0.81,
+      "coverage": 0.85,
+      "hitCount": 3,
+      "relevantEventCount": 22,
+      "worstDetector": ""
+    },
+    {
+      "principle": "feedback",
+      "score": 0.18,
+      "coverage": 1.0,
+      "hitCount": 18,
+      "relevantEventCount": 24,
+      "worstDetector": "feedback.no-verify-after-mutation"
+    },
+    {
+      "principle": "one_at_a_time",
+      "score": 0.64,
+      "coverage": 0.7,
+      "hitCount": 5,
+      "relevantEventCount": 18,
+      "worstDetector": ""
+    },
+    {
+      "principle": "codebase_docs",
+      "score": 0.55,
+      "coverage": 0.6,
+      "hitCount": 4,
+      "relevantEventCount": 12,
+      "worstDetector": ""
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "detectorId": "feedback.no-verify-after-mutation",
+      "principle": "feedback",
+      "severity": "high",
+      "evidence": "18 of 24 state-mutating tool.call events had no following verify.result in the same turn. Offending tools by count: db.write (11), api.post (7).",
+      "remediation": "Add a verify.result step after each state-mutating tool.call.",
+      "eventIds": [
+        "evt-0007",
+        "evt-0013",
+        "evt-0021",
+        "evt-0034",
+        "evt-0041"
+      ],
+      "forwardAction": "lucid evolve propose --finding F1"
+    }
+  ],
+  "plot2x2": {
+    "cells": {
+      "feedforward_computational": { "count": 14, "eventTypes": ["plan.emit", "task.slice"] },
+      "feedforward_inferential": { "count": 9, "eventTypes": ["context.load"] },
+      "feedback_computational": { "count": 0, "eventTypes": [] },
+      "feedback_inferential": { "count": 0, "eventTypes": [] }
+    },
+    "emptyColumns": ["feedback"],
+    "emptyRows": []
+  },
+  "generatedAt": "2026-06-18T00:00:00.000Z",
+  "llmJudgeEnabled": false
+}

@@ -1,0 +1,6 @@
+# Golden corpus — BEHAVIORAL scenarios.
+#
+# 06-02 materializes the abstract harness scenarios referenced by GOLDEN_CORPUS
+# (category "behavioral") here. These drive the adapter-under-test through a
+# sequence and assert absence-is-signal honesty (Layer 3): the adapter MUST emit
+# NOTHING for an absent verification step rather than fabricate one.

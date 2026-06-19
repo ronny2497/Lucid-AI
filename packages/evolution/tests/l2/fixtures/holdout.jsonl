@@ -1,0 +1,4 @@
+{"prompt": "Load the project context before planning the task.", "expected_output": "context.load emitted before plan.emit"}
+{"prompt": "Slice the work into one task at a time.", "expected_output": "task.slice with a single in-flight task"}
+{"prompt": "Run the feedback check after the tool call.", "expected_output": "feedback.check follows tool.call"}
+{"prompt": "Encode the change into the codebase docs.", "expected_output": "doc.encode references the codebase docs"}

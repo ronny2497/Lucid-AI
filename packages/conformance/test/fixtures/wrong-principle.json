@@ -1,0 +1,23 @@
+{
+  "hsc_version": "v0",
+  "trace_id": "trace-0005",
+  "turns": [
+    {
+      "turn_id": "turn-1",
+      "events": [
+        {
+          "span_id": "span-1",
+          "trace_id": "trace-0005",
+          "parent_span_id": null,
+          "name": "write file with wrong principle",
+          "harness.event_type": "tool.call",
+          "harness.principle": "one_at_a_time",
+          "harness.quadrant.x": null,
+          "harness.quadrant.y": null,
+          "harness.mutated_state": true,
+          "gen_ai.tool.name": "write_file"
+        }
+      ]
+    }
+  ]
+}

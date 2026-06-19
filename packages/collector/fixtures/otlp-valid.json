@@ -1,0 +1,72 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          { "key": "gen_ai.agent.id", "value": { "stringValue": "agent-langgraph-demo" } },
+          { "key": "harness.version", "value": { "stringValue": "0.1.0" } }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": { "name": "turn-0001" },
+          "spans": [
+            {
+              "traceId": "trace-golden-0001",
+              "spanId": "evt-0001",
+              "parentSpanId": "",
+              "name": "task.slice",
+              "startTimeUnixNano": "1718700000000000000",
+              "endTimeUnixNano": "1718700000500000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "harness.event_type", "value": { "stringValue": "task.slice" } },
+                { "key": "harness.principle", "value": { "stringValue": "one_at_a_time" } },
+                { "key": "harness.quadrant.x", "value": { "stringValue": "feedforward" } },
+                { "key": "harness.quadrant.y", "value": { "stringValue": "computational" } },
+                { "key": "harness.version", "value": { "stringValue": "0.1.0" } }
+              ]
+            },
+            {
+              "traceId": "trace-golden-0001",
+              "spanId": "evt-0002",
+              "parentSpanId": "evt-0001",
+              "name": "plan.emit",
+              "startTimeUnixNano": "1718700000600000000",
+              "endTimeUnixNano": "1718700002000000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "harness.event_type", "value": { "stringValue": "plan.emit" } },
+                { "key": "harness.principle", "value": { "stringValue": "plan_execute" } },
+                { "key": "harness.quadrant.x", "value": { "stringValue": "feedforward" } },
+                { "key": "harness.quadrant.y", "value": { "stringValue": "inferential" } },
+                { "key": "harness.version", "value": { "stringValue": "0.1.0" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "claude-sonnet-4-5" } },
+                { "key": "gen_ai.usage.input_tokens", "value": { "intValue": "1200" } },
+                { "key": "gen_ai.usage.output_tokens", "value": { "intValue": "350" } },
+                { "key": "gen_ai.provider.name", "value": { "stringValue": "anthropic" } }
+              ]
+            },
+            {
+              "traceId": "trace-golden-0001",
+              "spanId": "evt-0003",
+              "parentSpanId": "evt-0001",
+              "name": "tool.call write_file",
+              "startTimeUnixNano": "1718700002100000000",
+              "endTimeUnixNano": "1718700004000000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "harness.event_type", "value": { "stringValue": "tool.call" } },
+                { "key": "harness.principle", "value": { "stringValue": "plan_execute" } },
+                { "key": "harness.version", "value": { "stringValue": "0.1.0" } },
+                { "key": "harness.mutated_state", "value": { "boolValue": true } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "execute_tool" } },
+                { "key": "gen_ai.tool.name", "value": { "stringValue": "write_file" } }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

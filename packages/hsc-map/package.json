@@ -1,0 +1,30 @@
+{
+  "name": "@lucid/hsc-map",
+  "version": "0.0.0",
+  "description": "Isolation module for every PROVISIONAL HSC assumption: the gen_ai.* attribute map (A2/A6), the USD pricing table, and the success-derivation policy (A3). A Phase 0 HSC reconcile is a single-package change.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@lucid/hsc-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}

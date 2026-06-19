@@ -1,0 +1,6 @@
+# Golden corpus — FAIL traces.
+#
+# 06-02 materializes the deliberately-invalid traces referenced by GOLDEN_CORPUS
+# (category "fail") here — one per violation type, mirroring the Phase 0
+# fixtures under test/fixtures plus the launch violation set (prohibited
+# inference, gen_ai.system present, harness-under-gen_ai, fabricated event).

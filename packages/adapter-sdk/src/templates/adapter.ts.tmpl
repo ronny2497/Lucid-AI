@@ -1,0 +1,51 @@
+/**
+ * {{NAME}} — an HSC adapter for {{FRAMEWORK}}, scaffolded by `adapter init`.
+ *
+ * This is a working skeleton. Each hook below maps one observable moment of
+ * {{FRAMEWORK}} onto an HSC event and emits it through `ctx.emit(...)`, which
+ * routes every emission through the no-fabrication gate (emit-or-omit):
+ *
+ *   - Set `substantiated: true` ONLY when {{FRAMEWORK}} genuinely provided the
+ *     thing this event represents. If it did not, emit nothing (or pass
+ *     `substantiated: false`) — the ABSENCE is the signal (D-05). Never fabricate
+ *     a verify.result / feedback.check the framework did not actually perform.
+ *   - `inferred: true` is permitted ONLY for context.load and plan.emit (§5.2);
+ *     emit-or-omit rejects it on any other event.
+ *
+ * Declare a hook ONLY for events {{FRAMEWORK}} can observe. Leave the rest out and
+ * list them in the manifest's `honestAbsences` — that is how you say "this
+ * framework has no such step" honestly. The quadrant tags are derived for you by
+ * @lucid/sdk; do not hand-assign them.
+ */
+
+import { defineAdapter } from "@lucid/adapter-sdk";
+
+export const adapter = defineAdapter({
+  name: "{{NAME}}",
+  version: "0.1.0",
+  framework: "{{FRAMEWORK}}",
+  targets: "{{HSC_VERSION}}",
+
+  // Events {{FRAMEWORK}} genuinely lacks → declared absent (not a coverage gap).
+  // Remove an entry here the moment you add the corresponding hook below.
+  honestAbsences: ["feedback.check", "verify.result"],
+
+  // The context this agent loaded. Often inferable from the framework's setup.
+  onContextLoad: (ctx) =>
+    ctx.emit({ substantiated: true, attrs: { principle: "context" } }),
+
+  // The plan the agent emitted. plan.emit is permitted-inference (§5.2).
+  onPlanEmit: (ctx) =>
+    ctx.emit({ substantiated: true, attrs: { principle: "plan_execute" } }),
+
+  // A tool invocation. Set mutatedState only when the call mutated durable state.
+  onToolCall: (ctx) =>
+    ctx.emit({
+      substantiated: true,
+      attrs: { principle: "plan_execute" },
+    }),
+
+  // TODO: add onTaskSlice / onDocEncode if {{FRAMEWORK}} exposes those moments.
+  // TODO: add onVerify / onFeedbackCheck ONLY if {{FRAMEWORK}} truly verifies —
+  //       and then remove the matching entry from `honestAbsences` above.
+});

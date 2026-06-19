@@ -1,0 +1,43 @@
+{
+  "name": "@lucid/collector",
+  "version": "0.0.0",
+  "description": "The @lucid/collector ingestion service — a Hono OTLP/JSON receiver at POST /v1/traces that validates incoming HSC traces (zod + @lucid/conformance) and persists valid spans to @lucid/store (REQ-02, REQ-07).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "lucid-collector": "dist/server.js",
+    "lucid": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.0",
+    "@lucid/conformance": "workspace:*",
+    "@lucid/evolution": "workspace:*",
+    "@lucid/hsc-map": "workspace:*",
+    "@lucid/hsc-schema": "workspace:*",
+    "@lucid/store": "workspace:*",
+    "commander": "^12.1.0",
+    "hono": "^4.6.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}

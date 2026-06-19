@@ -1,0 +1,21 @@
+{
+  "hsc_version": "v0",
+  "trace_id": "trace-0006",
+  "turns": [
+    {
+      "turn_id": "turn-1",
+      "events": [
+        {
+          "span_id": "span-1",
+          "trace_id": "trace-0006",
+          "parent_span_id": null,
+          "name": "context load tagged with the wrong quadrant.y",
+          "harness.event_type": "context.load",
+          "harness.principle": "context",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "inferential"
+        }
+      ]
+    }
+  ]
+}

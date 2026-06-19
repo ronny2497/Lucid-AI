@@ -1,0 +1,22 @@
+{
+  "id": "cm-7f3a91",
+  "schema_version": "2",
+  "target": "my-agent@v37",
+  "agentId": "my-agent",
+  "change": "add-gate",
+  "detail": {
+    "kind": "add-gate",
+    "insertAfter": "tool.call:write_file",
+    "gate": "verify-write",
+    "condition": "verify the written file before continuing",
+    "targetFiles": ["config/gates.yaml"]
+  },
+  "rationale": "No verify gate follows mutating tool calls; add one to raise the feedback principle score.",
+  "evidence_ref": "lucid://findings/F1",
+  "expected_effect": {
+    "feedback": 0.15
+  },
+  "status": "accepted",
+  "estimator": "rule-based",
+  "generated_at": "2026-06-18T12:00:00.000Z"
+}

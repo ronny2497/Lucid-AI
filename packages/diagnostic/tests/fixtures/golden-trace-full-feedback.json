@@ -1,0 +1,95 @@
+{
+  "hsc_version": "v0",
+  "trace_id": "trace-full-feedback",
+  "harness_id": "hermes-agent",
+  "harness_version": "0.1.0",
+  "turns": [
+    {
+      "turn_id": "t1",
+      "name": "plan, mutate, verify",
+      "events": [
+        {
+          "span_id": "e1",
+          "harness.event_type": "context.load",
+          "harness.principle": "context",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "computational",
+          "gen_ai.usage.input_tokens": 3800
+        },
+        {
+          "span_id": "e2",
+          "harness.event_type": "plan.emit",
+          "harness.principle": "plan_execute",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "inferential"
+        },
+        {
+          "span_id": "e3",
+          "harness.event_type": "task.slice",
+          "harness.principle": "one_at_a_time",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "computational"
+        },
+        {
+          "span_id": "e4",
+          "harness.event_type": "tool.call",
+          "harness.principle": "plan_execute",
+          "harness.quadrant.x": null,
+          "harness.quadrant.y": null,
+          "harness.mutated_state": true,
+          "gen_ai.tool.name": "db.write"
+        },
+        {
+          "span_id": "e5",
+          "harness.event_type": "verify.result",
+          "harness.principle": "feedback",
+          "harness.quadrant.x": "feedback",
+          "harness.quadrant.y": "computational"
+        }
+      ]
+    },
+    {
+      "turn_id": "t2",
+      "name": "mutate, verify, encode",
+      "events": [
+        {
+          "span_id": "e6",
+          "harness.event_type": "task.slice",
+          "harness.principle": "one_at_a_time",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "computational"
+        },
+        {
+          "span_id": "e7",
+          "harness.event_type": "tool.call",
+          "harness.principle": "plan_execute",
+          "harness.quadrant.x": null,
+          "harness.quadrant.y": null,
+          "harness.mutated_state": true,
+          "gen_ai.tool.name": "api.post"
+        },
+        {
+          "span_id": "e8",
+          "harness.event_type": "verify.result",
+          "harness.principle": "feedback",
+          "harness.quadrant.x": "feedback",
+          "harness.quadrant.y": "computational"
+        },
+        {
+          "span_id": "e9",
+          "harness.event_type": "feedback.check",
+          "harness.principle": "feedback",
+          "harness.quadrant.x": "feedback",
+          "harness.quadrant.y": "inferential"
+        },
+        {
+          "span_id": "e10",
+          "harness.event_type": "doc.encode",
+          "harness.principle": "codebase_docs",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "computational"
+        }
+      ]
+    }
+  ]
+}

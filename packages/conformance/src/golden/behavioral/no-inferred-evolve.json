@@ -1,0 +1,33 @@
+{
+  "hsc_version": "v0",
+  "trace_id": "behavioral-no-inferred-evolve-0001",
+  "harness_id": "hermes",
+  "harness_version": "0.16.0",
+  "turns": [
+    {
+      "turn_id": "turn-1",
+      "events": [
+        {
+          "span_id": "span-1",
+          "trace_id": "behavioral-no-inferred-evolve-0001",
+          "parent_span_id": null,
+          "name": "evolve propose (directly observed, NOT inferred)",
+          "harness.event_type": "evolve.propose",
+          "harness.principle": "feedback",
+          "harness.quadrant.x": "feedback",
+          "harness.quadrant.y": "inferential"
+        },
+        {
+          "span_id": "span-2",
+          "trace_id": "behavioral-no-inferred-evolve-0001",
+          "parent_span_id": "span-1",
+          "name": "evolve apply (directly observed, NOT inferred)",
+          "harness.event_type": "evolve.apply",
+          "harness.principle": "feedback",
+          "harness.quadrant.x": "feedback",
+          "harness.quadrant.y": "computational"
+        }
+      ]
+    }
+  ]
+}

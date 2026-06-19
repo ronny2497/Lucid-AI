@@ -1,0 +1,15 @@
+# harness-v37 context budget policy (synthetic fixture).
+#
+# A `trim-context` change targets this file to remove a stale context source.
+
+budget:
+  max_tokens: 120000
+  reserve_for_output: 8000
+
+sources:
+  - id: codebase-docs
+    priority: high
+  - id: recent-conversation
+    priority: high
+  - id: stale-design-notes
+    priority: low

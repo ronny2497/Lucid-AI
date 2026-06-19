@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test / coverage
+coverage/
+.nyc_output/
+
+# Python (optional L2 TrainerPlugin sidecar)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Model artifacts / datasets (large; not source)
+*.safetensors
+*.ckpt
+*.gguf
+/datasets/
+/checkpoints/
+
+# GSD build-process tooling (machine-specific absolute paths; regenerate with:
+#   npx @opengsd/gsd-core@latest --claude --local )
+# The project's living specs live in .planning/ and ARE committed.
+.claude/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Internal GSD planning artifacts — not part of the public release
+.planning/
+prd/

@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lucid-trainer-grpo"
+version = "0.0.0"
+description = "Reference weight-level GRPO trainer sidecar for Lucid L2 self-evolution (REQ-05, Phase 5). A SEPARATE, OPTIONAL Python package: it reads a TS-written TrainerPluginSpec job from disk, runs TRL GRPOTrainer on fresh on-policy rollouts scored by the TS-computed scalar rewards (Approach A), and writes a schema-matching ResultManifest. The Lucid core (@lucid/evolution, @lucid/collector) takes NO Python dependency — this package is invoked only behind the FilesystemTrainerPlugin boundary at autonomy:L2 (ADR-0002, ADR-0004)."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+# Python >= 3.10 is the documented user prerequisite for a REAL GRPO run
+# (RESEARCH A6). The W3 hash + manifest-schema tests are pure stdlib and run
+# on any 3.10+; the heavy ML deps below are only needed for an actual train.
+requires-python = ">=3.10"
+authors = [{ name = "Lucid" }]
+
+# Runtime deps: the official HuggingFace training stack (RESEARCH "Package
+# Legitimacy Audit", all verdict OK; re-verified on PyPI at the blocking
+# package-legitimacy checkpoint preceding this task). Python does GRADIENT
+# MATH ONLY — none of these touch Lucid's reward/quality logic (ADR-0004).
+#
+#   trl          — GRPOTrainer / GRPOConfig (github.com/huggingface/trl)
+#   peft         — LoRA adapters; a candidate is a small adapter, not a full ckpt
+#   accelerate   — the distributed launcher TRL rides on
+#   transformers — base-model + tokenizer loading
+#   datasets     — load the prompts-only JSONL the TS side wrote
+#
+# These deps live SOLELY here. They are NOT in any package.json and are never
+# pulled by an `npm install` / `pnpm install` (this dir has no package.json, so
+# pnpm's `packages/*` workspace glob ignores it — the intent).
+dependencies = [
+  "trl>=1.6,<2",
+  "peft>=0.19",
+  "accelerate>=1.14",
+  "transformers>=4.46",
+  "datasets>=3",
+]
+
+[project.optional-dependencies]
+# vLLM is an OPTIONAL accelerator only — it requires CUDA, so it is never a
+# CI/default dependency (RESEARCH Pitfall 4; use_vllm defaults to false). Opt in
+# with `pip install lucid-trainer-grpo[vllm]` for a real GPU run.
+# (github.com/vllm-project/vllm — verdict OK at the legitimacy checkpoint.)
+vllm = ["vllm"]
+dev = ["pytest"]
+
+# A faster LoRA training backend is deliberately EXCLUDED here — it was flagged
+# SUS in the RESEARCH audit and needs its own legitimacy check before adoption.
+# See README.md "Alternative backends" for the documented (non-dependency) note.
+
+[project.scripts]
+lucid-trainer-grpo = "lucid_trainer_grpo.cli:main"
+
+[tool.pytest.ini_options]
+# `slow` marks the real tiny-CPU-model GRPO smoke test (EC-2): it SKIPs when the
+# heavy ML deps or the cached tiny model are unavailable offline. The W3 hash +
+# manifest-schema tests carry no marker and run everywhere (pure stdlib).
+markers = [
+  "slow: a real tiny-CPU-model GRPO step; skipped when ML deps / model are unavailable",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["lucid_trainer_grpo"]

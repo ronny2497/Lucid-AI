@@ -1,0 +1,14 @@
+# harness-v37 gates config (synthetic fixture).
+#
+# NOTE: there is intentionally NO verify gate after mutating tool calls here —
+# this is exactly the weakness an `add-gate` change fixes. The golden add-gate
+# apply inserts a verify-write gate after tool.call:write_file.
+
+gates:
+  - id: plan-before-execute
+    after: context.load
+    requires: plan.emit
+
+  - id: summarize-on-finish
+    after: task.complete
+    requires: summary.emit

@@ -1,0 +1,39 @@
+{
+  "name": "@lucid/compliance",
+  "version": "0.0.0",
+  "description": "@lucid/compliance — the regulatory evidence-export contract (REQ-06). Freezes the EU AI Act Article 12 EvidencePackage / EuAiActRecord Zod schemas (tamper-evident hash chain + non-certification disclaimer); the exporter, regime templates, and AuditSource seam land in 06-04.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "lucid-compliance": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@lucid/hsc-schema": "workspace:*",
+    "zod": "^3.23.0"
+  },
+  "//optionalDependencies": "@lucid/store is bound ONLY at the CLI argv boundary via a dynamic import (Assumption A1: no hard runtime dep on @lucid/store / @lucid/evolution). It is declared optional so installing @lucid/compliance as a library never pulls in the store; the CLI errors cleanly when it is absent.",
+  "optionalDependencies": {
+    "@lucid/store": "workspace:*"
+  },
+  "devDependencies": {
+    "@lucid/store": "workspace:*",
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}

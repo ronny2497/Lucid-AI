@@ -1,0 +1,31 @@
+{
+  "name": "@lucid/hsc-schema",
+  "version": "0.0.0",
+  "description": "Harness Semantic Conventions (HSC) v0 schema, constants, types, and the quadrant predicate — the canonical interface for the Lucid standard.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./schema": "./schema/HarnessTrace.schema.json"
+  },
+  "files": [
+    "dist",
+    "schema"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}

@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Cancel superseded runs on the same ref to save CI minutes.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: Build + test (TypeScript workspace)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # pnpm version is read from the root package.json "packageManager" field.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all packages
+        run: pnpm -r build
+
+      - name: Run test suites
+        run: pnpm -r test
+
+  python-sidecar:
+    name: Python GRPO sidecar (stdlib tests, no ML deps)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test runner
+        run: pip install pytest
+
+      # The non-"slow" tests are pure stdlib (W3 hash pin, manifest round-trip,
+      # spec-validation -> error-manifest) and import the ML stack lazily, so
+      # they run without trl/torch/transformers. The real GPU GRPO run is
+      # Manual-Only (see packages/trainer-grpo/README.md).
+      - name: Run stdlib tests
+        working-directory: packages/trainer-grpo
+        run: PYTHONPATH=. pytest -m "not slow" -q

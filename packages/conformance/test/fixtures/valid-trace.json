@@ -1,0 +1,45 @@
+{
+  "hsc_version": "v0",
+  "trace_id": "trace-0001",
+  "harness_id": "hermes",
+  "harness_version": "0.0.0",
+  "turns": [
+    {
+      "turn_id": "turn-1",
+      "events": [
+        {
+          "span_id": "span-1",
+          "trace_id": "trace-0001",
+          "parent_span_id": null,
+          "name": "load context",
+          "harness.event_type": "context.load",
+          "harness.principle": "context",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "computational"
+        },
+        {
+          "span_id": "span-2",
+          "trace_id": "trace-0001",
+          "parent_span_id": "span-1",
+          "name": "emit plan",
+          "harness.event_type": "plan.emit",
+          "harness.principle": "plan_execute",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "inferential"
+        },
+        {
+          "span_id": "span-3",
+          "trace_id": "trace-0001",
+          "parent_span_id": "span-2",
+          "name": "write file (mutates state, intentionally unverified)",
+          "harness.event_type": "tool.call",
+          "harness.principle": "plan_execute",
+          "harness.quadrant.x": null,
+          "harness.quadrant.y": null,
+          "harness.mutated_state": true,
+          "gen_ai.tool.name": "write_file"
+        }
+      ]
+    }
+  ]
+}

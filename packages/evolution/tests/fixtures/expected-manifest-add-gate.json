@@ -1,0 +1,15 @@
+{
+  "id": "cm-001",
+  "schema_version": "1",
+  "target": "my-agent@v37",
+  "change": "add-gate",
+  "detail": "Insert a verify.result step after each tool.call that mutates state; affected tools: db.write, api.post. Add the step immediately after the tool call in the same turn, before any subsequent action.",
+  "rationale": "Finding F1 (feedback.no-verify-after-mutation): 18 of 24 state-mutating calls had no verification step in the same turn. This is the highest-leverage Feedback gap per the 2x2 diagnostic (feedback column empty).",
+  "evidence_ref": "lucid://findings/F1",
+  "expected_effect": {
+    "feedback": 0.3
+  },
+  "status": "proposed",
+  "estimator": "rule-based",
+  "generated_at": "2026-06-18T00:00:00.000Z"
+}

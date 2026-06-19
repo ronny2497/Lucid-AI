@@ -1,0 +1,27 @@
+{
+  "resourceSpans": [
+    {
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "0af7651916cd43dd8448eb211c80319c",
+              "spanId": "00000000000000a1",
+              "parentSpanId": "",
+              "name": "chat context.load",
+              "attributes": [
+                { "key": "harness.event_type", "value": { "stringValue": "context.load" } },
+                { "key": "harness.principle", "value": { "stringValue": "context" } },
+                { "key": "harness.quadrant.x", "value": { "stringValue": "feedforward" } },
+                { "key": "harness.quadrant.y", "value": { "stringValue": "computational" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "chat" } },
+                { "key": "gen_ai.system", "value": { "stringValue": "anthropic" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "claude-sonnet-4" } }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

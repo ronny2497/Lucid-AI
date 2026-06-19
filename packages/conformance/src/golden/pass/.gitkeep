@@ -1,0 +1,6 @@
+# Golden corpus — PASS traces.
+#
+# 06-02 materializes the valid HSC v0 traces referenced by GOLDEN_CORPUS
+# (category "pass") here, including a mirror of examples/hermes-trace.json and
+# the absence-is-signal honest-absence trace (no verify.result/feedback.check).
+# Kept in git so the directory exists for the suite to drop files into.

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lucid-hermes-adapter"
+version = "0.0.0"
+description = "Reference HSC v0 adapter for hermes-agent — taps hermes lifecycle callbacks and emits OpenTelemetry spans carrying harness.* attributes. Reference/test-only; Lucid core takes no Python dependency (ADR-0002, D-07)."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+authors = [{ name = "Lucid" }]
+
+# Runtime deps: the official OpenTelemetry Python API + SDK. The adapter rides
+# the OTel SDK for span/context/ID generation and the SpanExporter interface
+# (RESEARCH "Don't Hand-Roll"). No hermes dependency is declared here: hermes is
+# the host process that imports and attaches this adapter, not a library this
+# package pulls in.
+dependencies = [
+  "opentelemetry-api",
+  "opentelemetry-sdk",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+# `live` marks the real hermes-run integration test; it SKIPs when the hermes
+# runtime / model credentials are unavailable (see tests/test_adapter_live.py).
+markers = [
+  "live: requires a live hermes-agent runtime + model credentials (skipped when unavailable)",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]

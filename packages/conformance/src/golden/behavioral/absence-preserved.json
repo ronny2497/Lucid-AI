@@ -1,0 +1,26 @@
+{
+  "hsc_version": "v0",
+  "trace_id": "behavioral-absence-0001",
+  "harness_id": "hermes",
+  "harness_version": "0.16.0",
+  "turns": [
+    {
+      "turn_id": "turn-1",
+      "events": [
+        {
+          "span_id": "span-1",
+          "trace_id": "behavioral-absence-0001",
+          "parent_span_id": null,
+          "name": "execute_tool write_file (mutating, intentionally unverified)",
+          "harness.event_type": "tool.call",
+          "harness.principle": "plan_execute",
+          "harness.quadrant.x": null,
+          "harness.quadrant.y": null,
+          "harness.mutated_state": true,
+          "gen_ai.operation.name": "execute_tool",
+          "gen_ai.tool.name": "write_file"
+        }
+      ]
+    }
+  ]
+}

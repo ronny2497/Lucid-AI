@@ -1,0 +1,41 @@
+{
+  "name": "@lucid/adapter-openai-agents",
+  "version": "0.0.0",
+  "description": "@lucid/adapter-openai-agents — the THIRD community adapter, authored ENTIRELY through the PUBLIC @lucid/adapter-sdk surface (defineAdapter + emit-or-omit) + @lucid/hsc-schema, with NO core-internal access. Models the OpenAI Agents SDK lifecycle onto HSC events; the Agents SDK has no verification/feedback hook, so it emits NO verify.result / feedback.check — that absence is an honest signal declared in honestAbsences, never synthesized. It is the EC-1 proof that a third party can author + certify an adapter unaided.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "manifest.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@lucid/adapter-sdk": "workspace:*",
+    "@lucid/hsc-schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@openai/agents": "*"
+  },
+  "peerDependenciesMeta": {
+    "@openai/agents": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@lucid/conformance": "workspace:*",
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}

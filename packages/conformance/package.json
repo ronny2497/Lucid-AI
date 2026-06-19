@@ -1,0 +1,44 @@
+{
+  "name": "@lucid/conformance",
+  "version": "0.0.0",
+  "description": "HSC trace conformance validator + the `lucid conformance --trace <file>` CLI — the machine-checkable gate for the Lucid standard (REQ-01, REQ-07).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/validate.js",
+  "types": "dist/validate.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/validate.d.ts",
+      "import": "./dist/validate.js"
+    },
+    "./suite": {
+      "types": "./dist/suite.d.ts",
+      "import": "./dist/suite.js"
+    },
+    "./badge": {
+      "types": "./dist/badge.d.ts",
+      "import": "./dist/badge.js"
+    }
+  },
+  "bin": {
+    "lucid-conformance": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@lucid/hsc-schema": "workspace:*",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}

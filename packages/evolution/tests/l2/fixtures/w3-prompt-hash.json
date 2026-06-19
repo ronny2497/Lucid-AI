@@ -1,0 +1,5 @@
+{
+  "_comment": "W3 cross-language prompt_hash contract fixture (05-02 <-> 05-04). Both the TS reward-computer.test.ts and the Python reward_bridge MUST compute the canonical hash of `prompt` and assert it equals `expected_prompt_hash`. Formula: 'sha256:' + lowercase_hex(sha256(utf8_bytes(prompt))) — the exact prompt bytes, no BOM, no trailing newline. PINNING: when `expected_prompt_hash` is the sentinel 'PIN_ON_FIRST_RUN', the TS test prints the canonical hash and asserts shape only; replace the sentinel with that printed value to freeze the cross-language pin (05-04 Python then asserts the SAME literal). Once frozen, any TS/Python disagreement fails loudly — the whole point of the fixture.",
+  "prompt": "Plan the task before invoking any state-mutating tool.",
+  "expected_prompt_hash": "sha256:7ecc29bbb8e6a1f7aa44cfbaf32ef2415a363c81aa7bf896d2058320f8af3b1b"
+}

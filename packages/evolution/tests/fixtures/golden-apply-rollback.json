@@ -1,0 +1,18 @@
+{
+  "id": "ar-trim-1",
+  "manifestId": "cm-trim-22",
+  "agentId": "my-agent",
+  "fromVersion": "v38",
+  "toVersion": "v38",
+  "changeKind": "trim-context",
+  "approvedBy": "auto-approver:guard",
+  "verdict": "REVERT",
+  "baselineScore": 0.72,
+  "candidateScore": 0.55,
+  "delta": -0.17,
+  "evidence": "context principle regressed -0.17 over 200 cohort samples; below min_delta — auto-reverted",
+  "affectedFiles": ["context-policy/budget.yaml"],
+  "contentHash": "sha256:5f4dcc3b5aa765d61d8327deb882cf99e0c5e9b9c9c2c0e6f3a1b2c4d5e6f7a8",
+  "rollbackStatus": "auto-rollback",
+  "createdAt": "2026-06-18T12:10:00.000Z"
+}

@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lucid.dev/schema/v0/HarnessTrace",
+  "title": "HarnessTrace",
+  "description": "HSC v0 root document: a harness trace composed of turns, each carrying HSC harness events. Single-file inline-$defs layout for Phase 0 (multi-file deferred to Phase 1).",
+  "type": "object",
+  "required": ["hsc_version", "trace_id", "turns"],
+  "properties": {
+    "hsc_version": {
+      "type": "string",
+      "const": "v0"
+    },
+    "trace_id": {
+      "type": "string"
+    },
+    "harness_id": {
+      "type": "string"
+    },
+    "harness_version": {
+      "type": "string"
+    },
+    "turns": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Turn" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "Turn": {
+      "type": "object",
+      "required": ["turn_id", "events"],
+      "properties": {
+        "turn_id": { "type": "string" },
+        "span_id": { "type": "string" },
+        "name": { "type": "string" },
+        "events": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/HarnessEvent" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "HarnessEvent": {
+      "type": "object",
+      "description": "A single HSC event. Carries the mandatory harness.event_type and harness.principle, the optional quadrant tags and harness.* extension fields, and the reused gen_ai.* OTel attributes (all nullable).",
+      "required": ["span_id", "harness.event_type", "harness.principle"],
+      "properties": {
+        "span_id": { "type": "string" },
+        "trace_id": { "type": "string" },
+        "parent_span_id": { "type": ["string", "null"] },
+        "name": { "type": "string" },
+        "start_time_unix_nano": { "type": "integer" },
+        "end_time_unix_nano": { "type": "integer" },
+        "harness.event_type": {
+          "type": "string",
+          "enum": [
+            "context.load",
+            "plan.emit",
+            "task.slice",
+            "tool.call",
+            "feedback.check",
+            "verify.result",
+            "doc.encode",
+            "evolve.propose",
+            "evolve.apply",
+            "evolve.train",
+            "evolve.promote",
+            "error"
+          ]
+        },
+        "harness.principle": {
+          "type": "string",
+          "enum": [
+            "context",
+            "plan_execute",
+            "feedback",
+            "one_at_a_time",
+            "codebase_docs"
+          ]
+        },
+        "harness.quadrant.x": {
+          "type": ["string", "null"],
+          "enum": ["feedforward", "feedback", null]
+        },
+        "harness.quadrant.y": {
+          "type": ["string", "null"],
+          "enum": ["computational", "inferential", null]
+        },
+        "harness.inferred": { "type": ["boolean", "null"] },
+        "harness.mutated_state": { "type": ["boolean", "null"] },
+        "harness.version": { "type": ["string", "null"] },
+        "harness.change_manifest_id": { "type": ["string", "null"] },
+        "gen_ai.operation.name": { "type": ["string", "null"] },
+        "gen_ai.provider.name": { "type": ["string", "null"] },
+        "gen_ai.agent.name": { "type": ["string", "null"] },
+        "gen_ai.agent.id": { "type": ["string", "null"] },
+        "gen_ai.request.model": { "type": ["string", "null"] },
+        "gen_ai.usage.input_tokens": { "type": ["integer", "null"] },
+        "gen_ai.usage.output_tokens": { "type": ["integer", "null"] },
+        "gen_ai.tool.name": { "type": ["string", "null"] },
+        "gen_ai.response.finish_reasons": {
+          "type": ["array", "null"],
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

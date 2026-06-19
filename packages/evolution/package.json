@@ -1,0 +1,32 @@
+{
+  "name": "@lucid/evolution",
+  "version": "0.0.0",
+  "description": "The @lucid/evolution L0 self-evolution package — the frozen change_manifest Zod schema family, the ProposalStore persistence seam, and the golden fixtures that specify the Phase 3 finding→proposal mapper (REQ-05). Zero blast radius: depends only on @lucid/diagnostic types, @lucid/hsc-schema, and zod — no harness write path.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@lucid/diagnostic": "workspace:*",
+    "@lucid/hsc-schema": "workspace:*",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@lucid/store",
+  "version": "0.0.0",
+  "description": "The abstract TraceStore interface (PRD §10 swap point) and its better-sqlite3 implementation with an absence-preserving, parameterized-SQL schema (REQ-02, REQ-03, REQ-07).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@lucid/hsc-schema": "workspace:*",
+    "better-sqlite3": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}

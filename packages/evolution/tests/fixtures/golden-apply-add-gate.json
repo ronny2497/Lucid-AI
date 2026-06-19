@@ -1,0 +1,18 @@
+{
+  "id": "ar-addgate-1",
+  "manifestId": "cm-7f3a91",
+  "agentId": "my-agent",
+  "fromVersion": "v37",
+  "toVersion": "v38",
+  "changeKind": "add-gate",
+  "approvedBy": "auto-approver:guard",
+  "verdict": "KEEP",
+  "baselineScore": 0.6,
+  "candidateScore": 0.78,
+  "delta": 0.18,
+  "evidence": "feedback principle +0.18 over 200 cohort samples; candidate >= baseline + min_delta",
+  "affectedFiles": ["config/gates.yaml"],
+  "contentHash": "sha256:b1946ac92492d2347c6235b4d2611184d2e5f3c0a1e0c5e9b9c9c2c0e6f3a1b2",
+  "rollbackStatus": "none",
+  "createdAt": "2026-06-18T12:05:00.000Z"
+}

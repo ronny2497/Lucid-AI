@@ -1,0 +1,20 @@
+{
+  "hsc_version": "v0",
+  "trace_id": "trace-0007",
+  "turns": [
+    {
+      "turn_id": "turn-1",
+      "events": [
+        {
+          "span_id": "span-1",
+          "trace_id": "trace-0007",
+          "parent_span_id": null,
+          "name": "feedback check with no emitter-specified quadrant.y",
+          "harness.event_type": "feedback.check",
+          "harness.principle": "feedback",
+          "harness.quadrant.x": "feedback"
+        }
+      ]
+    }
+  ]
+}

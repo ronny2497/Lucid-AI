@@ -1,0 +1,51 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          { "key": "gen_ai.agent.id", "value": { "stringValue": "agent-langgraph-demo" } },
+          { "key": "harness.version", "value": { "stringValue": "0.1.0" } }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": { "name": "turn-0001" },
+          "spans": [
+            {
+              "traceId": "trace-golden-0001",
+              "spanId": "evt-0001",
+              "parentSpanId": "",
+              "name": "task.slice",
+              "startTimeUnixNano": "1718700000000000000",
+              "endTimeUnixNano": "1718700000500000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "harness.event_type", "value": { "stringValue": "task.slice" } },
+                { "key": "harness.principle", "value": { "stringValue": "one_at_a_time" } },
+                { "key": "harness.quadrant.x", "value": { "stringValue": "feedforward" } },
+                { "key": "harness.quadrant.y", "value": { "stringValue": "computational" } },
+                { "key": "harness.version", "value": { "stringValue": "0.1.0" } }
+              ]
+            },
+            {
+              "traceId": "trace-golden-0001",
+              "spanId": "evt-0002",
+              "parentSpanId": "evt-0001",
+              "name": "plan.emit (event_type stripped)",
+              "startTimeUnixNano": "1718700000600000000",
+              "endTimeUnixNano": "1718700002000000000",
+              "status": { "code": 1 },
+              "attributes": [
+                { "key": "harness.principle", "value": { "stringValue": "plan_execute" } },
+                { "key": "harness.quadrant.x", "value": { "stringValue": "feedforward" } },
+                { "key": "harness.quadrant.y", "value": { "stringValue": "inferential" } },
+                { "key": "harness.version", "value": { "stringValue": "0.1.0" } },
+                { "key": "gen_ai.request.model", "value": { "stringValue": "claude-sonnet-4-5" } }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

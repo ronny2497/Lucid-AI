@@ -1,0 +1,77 @@
+{
+  "hscVersion": "v0",
+  "traceId": "trace-golden-0001",
+  "agentId": "agent-langgraph-demo",
+  "harnessVersion": "0.1.0",
+  "startTime": 1718700000000000000,
+  "endTime": 1718700004000000000,
+  "statusCode": 1,
+  "attrs": {
+    "harness.version": "0.1.0",
+    "gen_ai.agent.id": "agent-langgraph-demo"
+  },
+  "turns": [
+    {
+      "turnId": "turn-0001",
+      "events": [
+        {
+          "eventId": "evt-0001",
+          "traceId": "trace-golden-0001",
+          "parentId": null,
+          "eventType": "task.slice",
+          "principle": "one_at_a_time",
+          "quadrantX": "feedforward",
+          "quadrantY": "computational",
+          "startTime": 1718700000000000000,
+          "endTime": 1718700000500000000,
+          "statusCode": 1,
+          "attrs": {
+            "harness.event_type": "task.slice",
+            "harness.principle": "one_at_a_time",
+            "harness.version": "0.1.0"
+          }
+        },
+        {
+          "eventId": "evt-0002",
+          "traceId": "trace-golden-0001",
+          "parentId": "evt-0001",
+          "eventType": "plan.emit",
+          "principle": "plan_execute",
+          "quadrantX": "feedforward",
+          "quadrantY": "inferential",
+          "startTime": 1718700000600000000,
+          "endTime": 1718700002000000000,
+          "statusCode": 1,
+          "attrs": {
+            "harness.event_type": "plan.emit",
+            "harness.principle": "plan_execute",
+            "harness.version": "0.1.0",
+            "gen_ai.request.model": "claude-sonnet-4-5",
+            "gen_ai.usage.input_tokens": 1200,
+            "gen_ai.usage.output_tokens": 350,
+            "gen_ai.provider.name": "anthropic"
+          }
+        },
+        {
+          "eventId": "evt-0003",
+          "traceId": "trace-golden-0001",
+          "parentId": "evt-0001",
+          "eventType": "tool.call",
+          "principle": "plan_execute",
+          "quadrantX": null,
+          "quadrantY": null,
+          "startTime": 1718700002100000000,
+          "endTime": 1718700004000000000,
+          "statusCode": 1,
+          "attrs": {
+            "harness.event_type": "tool.call",
+            "harness.principle": "plan_execute",
+            "harness.version": "0.1.0",
+            "harness.mutated_state": true,
+            "gen_ai.tool.name": "write_file"
+          }
+        }
+      ]
+    }
+  ]
+}

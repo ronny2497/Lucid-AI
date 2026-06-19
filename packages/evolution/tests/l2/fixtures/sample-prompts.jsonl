@@ -1,0 +1,5 @@
+{"prompt_hash": "sha256:3f1a9c2b7d4e5f60718293a4b5c6d7e8f90112233445566778899aabbccddeeff", "prompt": "Write the file, then verify the write succeeded before continuing."}
+{"prompt_hash": "sha256:7c2e4a1b9d8f6053a1c2b3d4e5f60718293a4b5c6d7e8f90112233445566aabb", "prompt": "Summarize the diff in the change manifest, citing the originating finding."}
+{"prompt_hash": "sha256:b91d3e5a7c2048f6a1c2b3d4e5f60718293a4b5c6d7e8f9011223344556677ee", "prompt": "Plan the task before invoking any state-mutating tool."}
+{"prompt_hash": "sha256:e4a7c1b93d2058f6a1c2b3d4e5f60718293a4b5c6d7e8f901122334455667711", "prompt": "Load the codebase context for the target module before proposing an edit."}
+{"prompt_hash": "sha256:1d8f3e5a7c2049b6a1c2b3d4e5f60718293a4b5c6d7e8f9011223344556699cc", "prompt": "Encode the new decision into the project knowledge docs after applying it."}

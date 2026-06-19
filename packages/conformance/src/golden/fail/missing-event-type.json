@@ -1,0 +1,20 @@
+{
+  "hsc_version": "v0",
+  "trace_id": "trace-0002",
+  "turns": [
+    {
+      "turn_id": "turn-1",
+      "events": [
+        {
+          "span_id": "span-1",
+          "trace_id": "trace-0002",
+          "parent_span_id": null,
+          "name": "load context",
+          "harness.principle": "context",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "computational"
+        }
+      ]
+    }
+  ]
+}

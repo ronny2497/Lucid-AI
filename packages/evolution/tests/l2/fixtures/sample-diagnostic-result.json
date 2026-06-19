@@ -1,0 +1,60 @@
+{
+  "traceId": "trace-2026-06-18a",
+  "agentId": "my-agent",
+  "harness_version": "v37",
+  "principles": [
+    {
+      "principle": "context",
+      "score": 0.62,
+      "coverage": 0.75,
+      "hitCount": 3,
+      "relevantEventCount": 4,
+      "worstDetector": "context-staleness"
+    },
+    {
+      "principle": "plan_execute",
+      "score": 0.55,
+      "coverage": 0.6,
+      "hitCount": 2,
+      "relevantEventCount": 5,
+      "worstDetector": "plan-drift"
+    },
+    {
+      "principle": "feedback",
+      "score": 0.18,
+      "coverage": 0.8,
+      "hitCount": 1,
+      "relevantEventCount": 5,
+      "worstDetector": "no-verify-after-mutation"
+    },
+    {
+      "principle": "one_at_a_time",
+      "score": null,
+      "coverage": 0,
+      "hitCount": 0,
+      "relevantEventCount": 0,
+      "worstDetector": ""
+    },
+    {
+      "principle": "codebase_docs",
+      "score": 0.71,
+      "coverage": 0.5,
+      "hitCount": 1,
+      "relevantEventCount": 2,
+      "worstDetector": "doc-encoding-presence"
+    }
+  ],
+  "findings": [],
+  "plot2x2": {
+    "cells": {
+      "feedforward_computational": { "count": 4, "eventTypes": ["context.load", "task.slice", "doc.encode"] },
+      "feedforward_inferential": { "count": 2, "eventTypes": ["plan.emit"] },
+      "feedback_computational": { "count": 1, "eventTypes": ["verify.result"] },
+      "feedback_inferential": { "count": 0, "eventTypes": [] }
+    },
+    "emptyColumns": [],
+    "emptyRows": []
+  },
+  "generatedAt": "2026-06-18T12:00:00.000Z",
+  "llmJudgeEnabled": false
+}

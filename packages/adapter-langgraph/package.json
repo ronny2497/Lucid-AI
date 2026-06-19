@@ -1,0 +1,46 @@
+{
+  "name": "@lucid/adapter-langgraph",
+  "version": "0.0.0",
+  "description": "@lucid/adapter-langgraph — the neutral framework adapter. Maps LangGraph's invoke_agent/chat/execute_tool OTel spans onto HSC events via @lucid/sdk. Emits NO feedback.check/verify.result — that absence is an honest signal (the first live empty-feedback-column demo), never synthesized. Its purpose is to prove nothing hermes-specific leaked into HSC (D-07).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@lucid/sdk": "workspace:*",
+    "@lucid/hsc-schema": "workspace:*"
+  },
+  "peerDependencies": {
+    "@langchain/langgraph": "*",
+    "@langchain/core": "*"
+  },
+  "peerDependenciesMeta": {
+    "@langchain/langgraph": {
+      "optional": true
+    },
+    "@langchain/core": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@lucid/conformance": "workspace:*",
+    "@opentelemetry/api": "~1.9.0",
+    "@opentelemetry/sdk-trace-node": "^2.8.0",
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}

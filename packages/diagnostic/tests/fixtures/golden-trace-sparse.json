@@ -1,0 +1,36 @@
+{
+  "hsc_version": "v0",
+  "trace_id": "trace-sparse",
+  "harness_id": "hermes-agent",
+  "harness_version": "0.1.0",
+  "turns": [
+    {
+      "turn_id": "t1",
+      "name": "entirely feedforward — no feedback-relevant events",
+      "events": [
+        {
+          "span_id": "e1",
+          "harness.event_type": "context.load",
+          "harness.principle": "context",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "computational",
+          "gen_ai.usage.input_tokens": 2100
+        },
+        {
+          "span_id": "e2",
+          "harness.event_type": "plan.emit",
+          "harness.principle": "plan_execute",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "inferential"
+        },
+        {
+          "span_id": "e3",
+          "harness.event_type": "doc.encode",
+          "harness.principle": "codebase_docs",
+          "harness.quadrant.x": "feedforward",
+          "harness.quadrant.y": "computational"
+        }
+      ]
+    }
+  ]
+}

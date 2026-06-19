@@ -1,0 +1,24 @@
+{
+  "resourceSpans": [
+    {
+      "scopeSpans": [
+        {
+          "spans": [
+            {
+              "traceId": "0af7651916cd43dd8448eb211c80319c",
+              "spanId": "00000000000000a3",
+              "parentSpanId": "",
+              "name": "execute_tool write_file",
+              "attributes": [
+                { "key": "harness.event_type", "value": { "stringValue": "tool.call" } },
+                { "key": "gen_ai.principle", "value": { "stringValue": "plan_execute" } },
+                { "key": "gen_ai.operation.name", "value": { "stringValue": "execute_tool" } },
+                { "key": "gen_ai.tool.name", "value": { "stringValue": "write_file" } }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

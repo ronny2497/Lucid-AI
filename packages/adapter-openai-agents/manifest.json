@@ -1,0 +1,8 @@
+{
+  "name": "@lucid/adapter-openai-agents",
+  "version": "0.0.0",
+  "hscVersion": "v0",
+  "framework": "openai-agents@0.x",
+  "eventCoverage": ["context.load", "plan.emit", "tool.call"],
+  "honestAbsences": ["verify.result", "feedback.check"]
+}

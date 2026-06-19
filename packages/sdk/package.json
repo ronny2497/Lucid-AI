@@ -1,0 +1,33 @@
+{
+  "name": "@lucid/sdk",
+  "version": "0.0.0",
+  "description": "@lucid/sdk — TypeScript manual-instrumentation path for HSC v0. A thin wrapper over @opentelemetry/sdk-trace-node that emits HSC events (harness.event / harness.start().end()) as OTel spans carrying the harness.* attribute layer, plus the OTLP/HTTP exporter that ships them to the collector.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@lucid/hsc-schema": "workspace:*",
+    "@opentelemetry/api": "~1.9.0",
+    "@opentelemetry/exporter-trace-otlp-http": "~0.219.0",
+    "@opentelemetry/sdk-trace-node": "^2.8.0"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3",
+    "vitest": "^2.1.9"
+  }
+}
